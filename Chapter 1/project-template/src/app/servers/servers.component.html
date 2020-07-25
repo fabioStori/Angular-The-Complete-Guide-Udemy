@@ -1,19 +1,9 @@
 <label>
   Server Name
-  <input
-    type="text"
-    class="form-control"
-    [(ngModel)]="serverName"
-  />
+  <input type="text" class="form-control" [(ngModel)]="serverName" />
 </label>
 
-<button
-  class="btn btn-primary"
-  [disabled]="!allowNewServer"
-
-  (click)="onCreateServer()"
-
->
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">
   Add Server
 </button>
 <!--
@@ -25,6 +15,12 @@
 <hr /> -->
 
 
-<p *ngIf="serverCreated">server was created and it's name is: {{serverName}}</p>
-<!-- <app-server></app-server>
-<app-server></app-server> -->
+<p *ngIf="serverCreated"> server was created and it's name is: {{serverName}}</p>
+<hr>
+<!-- <ng-template #noServer>
+  <p>no server was created</p>
+</ng-template> -->
+<ul *ngFor="let server of serverList">
+  <app-server></app-server>
+
+</ul>
