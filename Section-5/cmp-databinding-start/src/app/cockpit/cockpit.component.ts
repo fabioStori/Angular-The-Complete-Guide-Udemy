@@ -20,7 +20,7 @@ export class CockpitComponent implements OnInit {
   // newServerName = "";
   // newServerContent = "";
 
-  @ViewChild('serverContentInput', {static: true}) serverContentInput: ElementRef;
+  @ViewChild('serverContentInput', {static: true}) serverContentInput: ElementRef; //directive access to elements in our dom through out viewchild
 
   constructor() {}
 

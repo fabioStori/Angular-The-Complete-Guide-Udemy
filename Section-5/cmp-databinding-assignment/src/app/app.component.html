@@ -1,0 +1,16 @@
+<app-game-control
+  (onStartGameClick)="startGameClicked()"
+  (onPauseGameClick)="pauseGameClicked()"
+></app-game-control>
+<hr />
+<div class="col-xs-6">
+  <div style="text-align: center;">
+    <app-odd *ngFor="let n of oddNumbers" [number]="n"></app-odd>
+  </div>
+</div>
+<div class="col-xs-6">
+  <div style="text-align: center;">
+    <app-even *ngFor="let n of evenNumbers" [number]="n"></app-even>
+  </div>
+</div>
+<hr />
