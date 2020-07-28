@@ -3,23 +3,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-game-control',
   templateUrl: './game-control.component.html',
-  styleUrls: ['./game-control.component.css']
+  styleUrls: ['./game-control.component.css'],
 })
 export class GameControlComponent implements OnInit {
+  @Output() onStartGameClick = new EventEmitter();
+  @Output() onPauseGameClick = new EventEmitter();
 
-  @Output() onStartGameClick = new EventEmitter()
-  @Output() onPauseGameClick = new EventEmitter()
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  startGameClick() {
+    this.onStartGameClick.emit();
   }
-
-  startGameClick(){
-    this.onStartGameClick.emit()
+  pauseGameClick() {
+    this.onPauseGameClick.emit();
   }
-  pauseGameClick(){
-    this.onPauseGameClick.emit()
-  }
-
 }
