@@ -6,6 +6,7 @@
       </button>
       <br /><br />
       <ul class="list-group">
+
         <div *ngIf="onlyOdd">
           <li
             class="list-group-item"
@@ -18,7 +19,8 @@
             {{ odd }}
           </li>
         </div>
-        <div *ngIf="!onlyOdd">
+
+        <div *appUnless="onlyOdd">
           <li
             class="list-group-item"
             *ngFor="let even of evenNumbers"
@@ -27,9 +29,39 @@
             {{ even }}
           </li>
         </div>
+
+        <!-- <div *ngIf="!onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let even of evenNumbers"
+            [ngClass]="{ even: even % 2 !== 0 }"
+          >
+            {{ even }}
+          </li>
+        </div>
+        using <ng-template [ngIf]> has the same meaning of using the *nfIf inside a div
+        <ng-template [ngIf]="!onlyOdd">
+          <div>
+            <li
+              class="list-group-item"
+              *ngFor="let even of evenNumbers"
+              [ngClass]="{ even: even % 2 !== 0 }"
+            >
+              {{ even }}
+            </li>
+          </div>
+        </ng-template> -->
+
       </ul>
       <p appBasicHighlight>basic-directive</p>
-      <p appBetterHighlight>better-directive</p>
+      <p [appBetterHighlight]="'red'" defaultColor="yellow">better-directive</p>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is Default</p>
+
+      </div>
     </div>
   </div>
 </div>
