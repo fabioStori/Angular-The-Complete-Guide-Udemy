@@ -21,7 +21,6 @@ export class UserComponent implements OnInit {
       (params: Params) => {
         this.user.id = params['id']
         this.user.name = params['name']
-
       }
     )
   }
