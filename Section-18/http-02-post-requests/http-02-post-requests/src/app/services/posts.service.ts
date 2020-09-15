@@ -1,8 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEventType,
+  HttpHeaders,
+  HttpParams
+} from '@angular/common/http';
 import { Post } from '../models/post.model';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -59,8 +64,17 @@ export class PostsService {
   }
 
   deletePosts(): Observable<{}> {
-    return this.http.delete(
-      'https://ng-complete-guide-3cd1d.firebaseio.com/posts.json'
-    );
+    return this.http
+      .delete('https://ng-complete-guide-3cd1d.firebaseio.com/posts.json', {
+        observe: 'events'
+      })
+      .pipe(
+        tap((event) => {
+          console.log(event);
+          // if(event.type === HttpEventType.Response){
+          //   console.log(event.body);
+          // }
+        })
+      );
   }
 }
