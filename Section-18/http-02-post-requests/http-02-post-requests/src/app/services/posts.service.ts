@@ -45,7 +45,8 @@ export class PostsService {
         'https://ng-complete-guide-3cd1d.firebaseio.com/posts.json',
         {
           headers: new HttpHeaders({ 'Custom-Header': 'Hello' }),
-          params: searchParams
+          params: searchParams,
+          responseType: 'json'
         }
       )
       .pipe(
@@ -66,11 +67,15 @@ export class PostsService {
   deletePosts(): Observable<{}> {
     return this.http
       .delete('https://ng-complete-guide-3cd1d.firebaseio.com/posts.json', {
-        observe: 'events'
+        observe: 'events',
+        responseType: 'text'
       })
       .pipe(
         tap((event) => {
           console.log(event);
+          // if(event.type === HttpEventType.Sent){
+          //
+          // }
           // if(event.type === HttpEventType.Response){
           //   console.log(event.body);
           // }
